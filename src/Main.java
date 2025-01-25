@@ -7,7 +7,7 @@ public class Main {
 
         while (true) {
             System.out.println("1. Manage Inventory");
-            System.out.println("2. Place order.Order");
+            System.out.println("2. Place order");
             System.out.println("3. Manage Employees");
             System.out.println("4. Manage Menu");
             System.out.println("5. Exit");
