@@ -30,7 +30,7 @@ public class RestaurantManagementSystem {
                     System.out.print("Enter item name: ");
                     String name = scanner.nextLine();
                     System.out.print("Enter item Type: ");
-                    String type = scanner.nextLine();
+                    String type = scanner.nextLine().trim().toLowerCase();
                     System.out.print("Enter quantity: ");
                     int quantity = scanner.nextInt();
                     System.out.print("Enter price: ");

@@ -10,6 +10,10 @@ public class Inventory {
         items = new ArrayList<>();
     }
 
+    public void setExpirationDate() {
+        System.out.println("Setting expiration date...");
+    }
+
     public void addItem(String name, String type,int quantity, double price) {
         items.add(new InventoryItem(name,type, quantity, price));
     }
