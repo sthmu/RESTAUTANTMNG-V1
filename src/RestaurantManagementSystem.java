@@ -29,11 +29,13 @@ public class RestaurantManagementSystem {
                 case 1:
                     System.out.print("Enter item name: ");
                     String name = scanner.nextLine();
+                    System.out.print("Enter item Type: ");
+                    String type = scanner.nextLine();
                     System.out.print("Enter quantity: ");
                     int quantity = scanner.nextInt();
                     System.out.print("Enter price: ");
                     double price = scanner.nextDouble();
-                    inventory.addItem(name, quantity, price);
+                    inventory.addItem(name, type,quantity, price);
                     break;
                 case 2:
                     System.out.print("Enter item name to remove: ");

@@ -3,9 +3,11 @@ package inventory;
 public class InventoryItem extends Ingredient {
     private int quantity;
     private double price;
+    private String type;
 
-    public InventoryItem(String name, int quantity, double price) {
+    public InventoryItem(String name,String type, int quantity, double price) {
         super(name);
+        this.type = type;
         this.quantity = quantity;
         this.price = price;
     }
@@ -20,6 +22,10 @@ public class InventoryItem extends Ingredient {
 
     @Override
     public String toString() {
-        return super.toString() + ", Quantity: " + quantity + ", Price: " + price;
+        return "InventoryItem{" +
+                "price=" + price +
+                ", quantity=" + quantity +
+                ", type='" + type + '\'' +
+                "} " + super.toString();
     }
 }

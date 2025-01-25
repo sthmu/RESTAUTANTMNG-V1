@@ -10,8 +10,8 @@ public class Inventory {
         items = new ArrayList<>();
     }
 
-    public void addItem(String name, int quantity, double price) {
-        items.add(new InventoryItem(name, quantity, price));
+    public void addItem(String name, String type,int quantity, double price) {
+        items.add(new InventoryItem(name,type, quantity, price));
     }
 
     public void removeItem(String name) {
