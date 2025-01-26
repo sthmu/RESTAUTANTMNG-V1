@@ -1,3 +1,5 @@
+import common.TitleStrings;
+
 import java.util.Scanner;
 
 import static common.ManagerClass.clearConsole;
@@ -8,6 +10,8 @@ public class Main {
         RestaurantManagementSystem system = new RestaurantManagementSystem();
 
         while (true) {
+            clearConsole();
+            System.out.println(TitleStrings.APP_TITLE);
             System.out.println("1. Manage Inventory");
             System.out.println("2. Place order");
             System.out.println("3. Manage Employees");

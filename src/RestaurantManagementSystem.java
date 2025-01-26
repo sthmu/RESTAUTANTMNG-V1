@@ -1,4 +1,5 @@
 import common.ManagerClass;
+import common.TitleStrings;
 import inventory.InventoryItem;
 import inventory.InventoryManager;
 import menu.MenuManager;
@@ -21,6 +22,8 @@ public class RestaurantManagementSystem extends ManagerClass {
     public void manageInventory() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            clearConsole();
+            System.out.println(TitleStrings.MANAGE_INVENTORY);
             System.out.println("1. Add Item");
             System.out.println("2. Remove Item");
             System.out.println("3. View Items");
@@ -28,7 +31,7 @@ public class RestaurantManagementSystem extends ManagerClass {
             System.out.println("5. Back to Main Menu");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1:
@@ -71,6 +74,8 @@ public class RestaurantManagementSystem extends ManagerClass {
 
         List<OrderItem> items = new ArrayList<>();
         while (true) {
+            clearConsole();
+            System.out.println(TitleStrings.ORDER_MANAGE);
             System.out.print("Enter item name (or enter 'done' to finish): ");
             String itemName = scanner.nextLine();
             if (itemName.equalsIgnoreCase("done")) {
@@ -80,7 +85,7 @@ public class RestaurantManagementSystem extends ManagerClass {
             int quantity = scanner.nextInt();
             System.out.print("Enter price: ");
             double price = scanner.nextDouble();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine();
             items.add(new OrderItem(itemName, quantity, price));
         }
 
@@ -91,19 +96,21 @@ public class RestaurantManagementSystem extends ManagerClass {
     public void manageEmployees() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            clearConsole();
+            System.out.println(TitleStrings.MANAGE_STAFF);
             System.out.println("1. Add Employee");
             System.out.println("2. Remove Employee");
             System.out.println("3. View Employees");
             System.out.println("4. Back to Main Menu");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1:
                     System.out.print("Enter employee ID: ");
                     int id = scanner.nextInt();
-                    scanner.nextLine(); // consume newline
+                    scanner.nextLine(); 
                     System.out.print("Enter employee name: ");
                     String name = scanner.nextLine();
                     System.out.print("Enter contact: ");
@@ -112,7 +119,7 @@ public class RestaurantManagementSystem extends ManagerClass {
                     String role = scanner.nextLine();
                     System.out.print("Enter salary: ");
                     double salary = scanner.nextDouble();
-                    scanner.nextLine(); // consume newline
+                    scanner.nextLine(); 
                     System.out.print("Enter position: ");
                     String position = scanner.nextLine();
                     staffManager.addStaff(id, name, contact, role, salary, position);
@@ -137,13 +144,15 @@ public class RestaurantManagementSystem extends ManagerClass {
     public void manageMenu() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            clearConsole();
+            System.out.println(TitleStrings.MANAGE_MENU);
             System.out.println("1. Add Menu Item");
             System.out.println("2. Remove Menu Item");
             System.out.println("3. View Menu Items");
             System.out.println("4. Back to Main Menu");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1:
