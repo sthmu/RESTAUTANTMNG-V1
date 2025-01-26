@@ -143,7 +143,8 @@ public class RestaurantManagementSystem {
                     String name = scanner.nextLine();
                     System.out.print("Enter price: ");
                     double price = scanner.nextDouble();
-                    menuManager.addMenuItem(name, price);
+                    List<String> array2= List.of(new String[]{"chocolate", "sugar", "water"});
+                    menuManager.addMenuItem(name, price,true,array2);
                     break;
                 case 2:
                     System.out.print("Enter menu item name to remove: ");
