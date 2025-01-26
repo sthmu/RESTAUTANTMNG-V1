@@ -1,15 +1,16 @@
-import inventory.Inventory;
+import inventory.InventoryManager;
 import menu.MenuManager;
 import order.OrderItem;
 import order.OrderManager;
 import staff.StaffManager;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
 public class RestaurantManagementSystem {
-    private Inventory inventory = new Inventory();
+    private InventoryManager inventoryManager = new InventoryManager();
     private OrderManager orderManager = new OrderManager();
     private StaffManager staffManager = new StaffManager();
     private MenuManager menuManager = new MenuManager();
@@ -20,7 +21,8 @@ public class RestaurantManagementSystem {
             System.out.println("1. Add Item");
             System.out.println("2. Remove Item");
             System.out.println("3. View Items");
-            System.out.println("4. Back to Main Menu");
+            System.out.println("4. View Notifications");
+            System.out.println("5. Back to Main Menu");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // consume newline
@@ -33,17 +35,23 @@ public class RestaurantManagementSystem {
                     int quantity = scanner.nextInt();
                     System.out.print("Enter price: ");
                     double price = scanner.nextDouble();
-                    inventory.addItem(name, quantity, price);
+                    System.out.print("Enter expire date (YYYY-MM-DD): ");
+                    String expireDateString = scanner.next();
+                    LocalDate expireDate = LocalDate.parse(expireDateString);
+                    inventoryManager.addItem(name, quantity, price, expireDate);
                     break;
                 case 2:
                     System.out.print("Enter item name to remove: ");
                     String itemName = scanner.nextLine();
-                    inventory.removeItem(itemName);
+                    inventoryManager.removeItem(itemName);
                     break;
                 case 3:
-                    inventory.viewItems();
+                    inventoryManager.viewItems();
                     break;
                 case 4:
+                    inventoryManager.viewNotifications();
+                    break;
+                case 5:
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
