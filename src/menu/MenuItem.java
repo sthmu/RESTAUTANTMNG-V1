@@ -48,8 +48,13 @@ public class MenuItem {
         this.ingredients = ingredients;
     }
 
+    @Override
+    public String toString() {
+        return displayDetails();
+    }
+
     public String displayDetails() {
-       return "menu.MenuItem: " + name + ", Price: " + price + ",Availability: "+ (isAvailable ? "Yes" : "No"+ ", Ingredients: " + ingredients);
+       return "MenuItem: " + name + ", Price: " + price + ",Availability: "+ (isAvailable ? "Yes" : "No"+ ", Ingredients: " + ingredients);
     }
     //Inheritance
     class Drinks extends MenuItem {
@@ -68,15 +73,14 @@ public class MenuItem {
             this.size = size;
         }
 
-        // Override the displayDetails method to include size-polymorphism
         @Override
         public String displayDetails() {
             return "menu.MenuItem: " + getName() + ", Price: " + getPrice() + ",Availability: "+ (getisAvailable() ? "Yes" : "No"+ ", Ingredients: " + ingredients+",Size: "+size);
         }
         //Inheritance
-        class mainCourses extends MenuItem{
-            private String cuisineType; // Type of cuisine (e.g., Italian, Indian)
-            private String dietaryCategory;//vegetarian/vegan
+        class MainCourses extends MenuItem{
+            private String cuisineType;
+            private String dietaryCategory;
 
             public String getCuisineType() {
                 return cuisineType;
@@ -94,7 +98,7 @@ public class MenuItem {
                 this.dietaryCategory = dietaryCategory;
             }
 
-            public mainCourses(String name, double price, boolean isAvailable, String cuisineType, String dietaryCategory) {
+            public MainCourses(String name, double price, boolean isAvailable, String cuisineType, String dietaryCategory) {
                 super(name, price, isAvailable,ingredients);
                 this.cuisineType=cuisineType;
                 this.dietaryCategory=dietaryCategory;
@@ -109,6 +113,8 @@ public class MenuItem {
            //Inheritance
           class Desserts extends MenuItem{
             private String temperature;
+
+
               public Desserts(String name, double price, boolean isAvailable,String temperature) {
                   super(name, price, isAvailable,ingredients);
                   this.temperature=temperature;
