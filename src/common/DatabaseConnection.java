@@ -50,8 +50,16 @@ public class DatabaseConnection {
         return instance;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() throws SQLException {
+        ensureConnection();
         return connection;
+    }
+
+    private void ensureConnection() throws SQLException {
+        if (connection == null || connection.isClosed()) {
+            this.connection = DriverManager.getConnection(URL + DATABASE_NAME, USER, PASSWORD);
+            System.out.println("Reconnected to the database.");
+        }
     }
 
     public void closeConnection() {
