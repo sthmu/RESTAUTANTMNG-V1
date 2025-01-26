@@ -8,6 +8,14 @@ public class StaffManager {
 
     private List<Staff> staffList;
 
+    public List<Staff> getStaffList() {
+        return staffList;
+    }
+
+    public void setStaffList(List<Staff> staffList) {
+        this.staffList = staffList;
+    }
+
     public StaffManager() {
         staffList = new ArrayList<>();
     }
