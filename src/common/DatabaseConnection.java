@@ -3,9 +3,11 @@ package common;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/rms";
+    private static final String URL = "jdbc:mysql://localhost:3306/";
+    private static final String DATABASE_NAME = "rms";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
     private static DatabaseConnection instance;
@@ -15,7 +17,18 @@ public class DatabaseConnection {
         try {
             // Explicitly load the MySQL JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-            this.connection = DriverManager.getConnection(URL, USER, PASSWORD);
+
+            // Connect to MySQL server without specifying a database
+            Connection initialConnection = DriverManager.getConnection(URL, USER, PASSWORD);
+            Statement statement = initialConnection.createStatement();
+
+            // Check if the database exists, and create it if it doesn't
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + DATABASE_NAME);
+            statement.close();
+            initialConnection.close();
+
+            // Connect to the specified database
+            this.connection = DriverManager.getConnection(URL + DATABASE_NAME, USER, PASSWORD);
             System.out.println("Database connection established successfully.");
         } catch (ClassNotFoundException e) {
             System.err.println("MySQL JDBC Driver not found: " + e.getMessage());
