@@ -16,6 +16,10 @@ public class InventoryManager {
         notifications = new ArrayList<>();
         inventoryDatabaseManager = new InventoryDatabaseManager();
         inventoryDatabaseManager.createInventoryItemTable();
+
+//        settin the itemlist
+        items = inventoryDatabaseManager.viewItems();
+
     }
 
     public void addItem(String name, int quantity, double price, LocalDate expireDate) {
@@ -35,6 +39,10 @@ public class InventoryManager {
     }
 
     public void viewNotifications() {
+        //this will set the notifications array
+        for (InventoryItem item: items) {
+            checkNotifications(item);
+        }
         for (Notification notification : notifications) {
             System.out.println(notification.getNoticationMessage());
         }
@@ -55,4 +63,5 @@ public class InventoryManager {
             notifications.add(notification);
         }
     }
+
 }
