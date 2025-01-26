@@ -11,8 +11,8 @@ public class MenuManager {
         this.menuItems = new ArrayList<>();
     }
     // Method to add a new menu item
-    public void addMenuItem(String name, double price,boolean isAvailable) {
-        menuItems.add(new MenuItem(name, price, isAvailable));
+    public void addMenuItem(String name, double price,boolean isAvailable, List<String> ingredients) {
+        menuItems.add(new MenuItem(name, price, isAvailable,ingredients));
     }
     // Method to remove a menu item
     public void removeMenuItem(String name) {
@@ -34,5 +34,15 @@ public class MenuManager {
         for (MenuItem item : menuItems) {
             System.out.println(item);
         }
+    }
+    // Retrieve ingredients for a specific dish
+    public void getIngredients(String name) {
+        for (MenuItem menuItem : menuItems) {
+            if (menuItem.getName().equalsIgnoreCase(name)) {
+                System.out.println("Ingredients for " + name + ": " + menuItem.getIngredients());
+                return;
+            }
+        }
+        System.out.println("Menu item not found!");
     }
 }
