@@ -31,7 +31,7 @@ public class RestaurantManagementSystem extends ManagerClass {
             System.out.println("5. Back to Main Menu");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -57,6 +57,50 @@ public class RestaurantManagementSystem extends ManagerClass {
                     break;
                 case 4:
                     inventoryManager.viewNotifications();
+                    break;
+                case 5:
+                    return;
+                default:
+                    clearConsole();
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    public void manageOrders() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            clearConsole();
+            System.out.println(TitleStrings.ORDER_MANAGE);
+            System.out.println("1. Place Order");
+            System.out.println("2. View Orders");
+            System.out.println("3. Update Order Status");
+            System.out.println("4. Remove Order");
+            System.out.println("5. Back to Main Menu");
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    placeOrder();
+                    break;
+                case 2:
+                    orderManager.viewOrders();
+                    break;
+                case 3:
+                    System.out.print("Enter order ID to update: ");
+                    int orderId = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter new status (PENDING, PROCESSING, COMPLETED, CANCELLED): ");
+                    String statusString = scanner.next();
+                    OrderStatus status = OrderStatus.valueOf(statusString.toUpperCase());
+                    orderManager.updateOrderStatus(orderId, status);
+                    break;
+                case 4:
+                    System.out.print("Enter order ID to remove: ");
+                    int removeOrderId = scanner.nextInt();
+                    orderManager.removeOrder(removeOrderId);
                     break;
                 case 5:
                     return;
@@ -104,13 +148,13 @@ public class RestaurantManagementSystem extends ManagerClass {
             System.out.println("4. Back to Main Menu");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
                     System.out.print("Enter employee ID: ");
                     int id = scanner.nextInt();
-                    scanner.nextLine(); 
+                    scanner.nextLine();
                     System.out.print("Enter employee name: ");
                     String name = scanner.nextLine();
                     System.out.print("Enter contact: ");
@@ -119,7 +163,7 @@ public class RestaurantManagementSystem extends ManagerClass {
                     String role = scanner.nextLine();
                     System.out.print("Enter salary: ");
                     double salary = scanner.nextDouble();
-                    scanner.nextLine(); 
+                    scanner.nextLine();
                     System.out.print("Enter position: ");
                     String position = scanner.nextLine();
                     staffManager.addStaff(id, name, contact, role, salary, position);
@@ -152,7 +196,7 @@ public class RestaurantManagementSystem extends ManagerClass {
             System.out.println("4. Back to Main Menu");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:

@@ -13,7 +13,7 @@ public class Main {
             clearConsole();
             System.out.println(TitleStrings.APP_TITLE);
             System.out.println("1. Manage Inventory");
-            System.out.println("2. Place order");
+            System.out.println("2. Manage Orders");
             System.out.println("3. Manage Employees");
             System.out.println("4. Manage Menu");
             System.out.println("5. Exit");
@@ -27,7 +27,7 @@ public class Main {
                     break;
                 case 2:
                     clearConsole();
-                    system.placeOrder();
+                    system.manageOrders();
                     break;
                 case 3:
                     clearConsole();
