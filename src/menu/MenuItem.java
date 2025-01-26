@@ -4,13 +4,11 @@ import java.util.List;
 
 // Class to represent a menu item
 public class MenuItem {
-    //"private" Access modifier is used for Encapsulation
+    private int id;
     private String name;// Name of the menu item
-    private double price;// Price of the menu item
+    private double price; // Price of the menu item
     private boolean isAvailable; // Availability status of the menu item
     private List<String> ingredients;  // List of ingredients for the menu item
-
-
 
     public MenuItem(String name, double price,boolean isAvailable,List<String> ingredients) {
         this.name = name;

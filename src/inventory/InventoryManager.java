@@ -1,12 +1,13 @@
 package inventory;
 
 import Notifications.Notification;
+import common.ManagerClass;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InventoryManager {
+public class InventoryManager extends ManagerClass {
     private List<InventoryItem> items;
     private List<Notification> notifications;
     private static InventoryDatabaseManager inventoryDatabaseManager;
@@ -22,17 +23,35 @@ public class InventoryManager {
 
     }
 
-    public void addItem(String name, int quantity, double price, LocalDate expireDate) {
+    public void add(String name, int quantity, double price, LocalDate expireDate) {
         InventoryItem item = new InventoryItem(name, quantity, price, expireDate);
         items.add(item);
         checkNotifications(item);
     }
-
-    public void removeItem(String name) {
-        items.removeIf(item -> item.getName().equals(name));
+    public void add(InventoryItem item) {
+        items.add((InventoryItem) item);
+        checkNotifications((InventoryItem) item);
     }
 
-    public void viewItems() {
+    public void remove(int id) {
+        items.removeIf(item -> item.getId()==(id));
+    }
+    public void remove(String name) {
+        items.removeIf(item -> ((InventoryItem)item).getName().equals(name));
+    }
+    public void remove(InventoryItem item) {
+        if(item.getId()!=0){
+            remove(item.getId());
+        }else if (item.getName()!=null) {
+            remove(item.getName());
+        }else{
+            System.out.println("Invalid item");
+            return;
+        }
+
+    }
+
+    public void view() {
         for (InventoryItem item : items) {
             System.out.println(item);
         }
@@ -41,7 +60,7 @@ public class InventoryManager {
     public void viewNotifications() {
         //this will set the notifications array
         for (InventoryItem item: items) {
-            checkNotifications(item);
+            checkNotifications((InventoryItem) item);
         }
         for (Notification notification : notifications) {
             System.out.println(notification.getNoticationMessage());
@@ -64,4 +83,7 @@ public class InventoryManager {
         }
     }
 
+    public List<InventoryItem> getItems() {
+        return items;
+    }
 }

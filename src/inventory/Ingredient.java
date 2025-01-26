@@ -1,18 +1,22 @@
 package inventory;
 
-public class Ingredient {
-    private String name;
+import menu.MenuItem;
 
-    public Ingredient(String name) {
-        this.name = name;
+import java.time.LocalDate;
+import java.util.List;
+
+public class Ingredient extends InventoryItem{
+    private List<MenuItem>  associatedMenuItems;
+
+    public Ingredient(String name, int quantity, double price, LocalDate expireDate) {
+        super(name, quantity, price, expireDate);
     }
 
-    public String getName() {
-        return name;
+    public void setAssociatedMenuItems(List<MenuItem> associatedMenuItems) {
+        this.associatedMenuItems = associatedMenuItems;
     }
 
-    @Override
-    public String toString() {
-        return "Ingredient: " + name;
+    public List<MenuItem> getAssociatedMenuItems() {
+        return associatedMenuItems;
     }
 }

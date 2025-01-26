@@ -1,3 +1,5 @@
+import common.ManagerClass;
+import inventory.InventoryItem;
 import inventory.InventoryManager;
 import menu.MenuManager;
 import order.OrderItem;
@@ -9,7 +11,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
-public class RestaurantManagementSystem {
+public class RestaurantManagementSystem extends ManagerClass {
     private InventoryManager inventoryManager = new InventoryManager();
     private OrderManager orderManager = new OrderManager();
     private StaffManager staffManager = new StaffManager();
@@ -38,15 +40,16 @@ public class RestaurantManagementSystem {
                     System.out.print("Enter expire date (YYYY-MM-DD): ");
                     String expireDateString = scanner.next();
                     LocalDate expireDate = LocalDate.parse(expireDateString);
-                    inventoryManager.addItem(name, quantity, price, expireDate);
+                    inventoryManager.add(name, quantity, price, expireDate);
                     break;
                 case 2:
                     System.out.print("Enter item name to remove: ");
                     String itemName = scanner.nextLine();
-                    inventoryManager.removeItem(itemName);
+
+                    inventoryManager.remove(new InventoryItem(itemName));
                     break;
                 case 3:
-                    inventoryManager.viewItems();
+                    inventoryManager.view();
                     break;
                 case 4:
                     inventoryManager.viewNotifications();
@@ -54,6 +57,7 @@ public class RestaurantManagementSystem {
                 case 5:
                     return;
                 default:
+                    clearConsole();
                     System.out.println("Invalid choice. Please try again.");
             }
         }
@@ -121,6 +125,7 @@ public class RestaurantManagementSystem {
                 case 4:
                     return;
                 default:
+                    clearConsole();
                     System.out.println("Invalid choice. Please try again.");
             }
         }

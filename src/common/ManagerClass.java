@@ -1,6 +1,6 @@
 package common;
 
-public class ManagerClass {
+public abstract class ManagerClass {
     public static void clearConsole() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {

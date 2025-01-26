@@ -1,4 +1,7 @@
 import java.util.Scanner;
+
+import static common.ManagerClass.clearConsole;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -15,21 +18,27 @@ public class Main {
 
             switch (choice) {
                 case 1:
+                    clearConsole();
                     system.manageInventory();
                     break;
                 case 2:
+                    clearConsole();
                     system.placeOrder();
                     break;
                 case 3:
+                    clearConsole();
                     system.manageEmployees();
                     break;
                 case 4:
+                    clearConsole();
                     system.manageMenu();
                     break;
                 case 5:
+                    clearConsole();
                     System.out.println("Exiting...");
                     return;
                 default:
+                    clearConsole();
                     System.out.println("Invalid choice. Please try again.");
             }
         }
