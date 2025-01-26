@@ -4,6 +4,7 @@ import inventory.InventoryManager;
 import menu.MenuManager;
 import order.OrderItem;
 import order.OrderManager;
+import order.OrderStatus;
 import staff.StaffManager;
 
 import java.time.LocalDate;
@@ -70,15 +71,17 @@ public class RestaurantManagementSystem extends ManagerClass {
 
         List<OrderItem> items = new ArrayList<>();
         while (true) {
-            System.out.print("Enter item name (or 'done' to finish): ");
+            System.out.print("Enter item name (or enter 'done' to finish): ");
             String itemName = scanner.nextLine();
             if (itemName.equalsIgnoreCase("done")) {
                 break;
             }
             System.out.print("Enter quantity: ");
             int quantity = scanner.nextInt();
+            System.out.print("Enter price: ");
+            double price = scanner.nextDouble();
             scanner.nextLine(); // consume newline
-            items.add(new OrderItem(itemName, quantity));
+            items.add(new OrderItem(itemName, quantity, price));
         }
 
         orderManager.createOrder(customerName, items);
@@ -148,7 +151,7 @@ public class RestaurantManagementSystem extends ManagerClass {
                     String name = scanner.nextLine();
                     System.out.print("Enter price: ");
                     double price = scanner.nextDouble();
-                    List<String> array2= List.of(new String[]{"chocolate", "sugar", "water"});
+                    List<String> array2= List.of(new String[]{"dehi", "sugar", "water"});
                     menuManager.addMenuItem(name, price,true,array2);
                     break;
                 case 2:
@@ -162,7 +165,7 @@ public class RestaurantManagementSystem extends ManagerClass {
                 case 4:
                     return;
                 default:
-                    System.out.println("Invalid choice. Please try again.");
+                    System.out.println("Invalid choice. try again.");
             }
         }
     }

@@ -23,4 +23,13 @@ public class OrderManager {
     public void removeOrder(int orderId) {
         orders.removeIf(order -> order.getId() == orderId);
     }
+
+    public void updateOrderStatus(int orderId, OrderStatus status) {
+        for (Order order : orders) {
+            if (order.getId() == orderId) {
+                order.setStatus(status);
+                break;
+            }
+        }
+    }
 }
