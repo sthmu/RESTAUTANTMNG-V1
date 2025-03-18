@@ -2,16 +2,17 @@ package common;
 
 public abstract class ManagerClass {
     public static void clearConsole() {
+        String os = System.getProperty("os.name").toLowerCase();
         try {
-            if (System.getProperty("os.name").contains("Windows")) {
+            if (os.contains("windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } else {
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
             }
         } catch (Exception e) {
-            System.out.println("Error clearing console.");
+            System.out.println("Unable to clear the console.");
         }
     }
+
 
 }

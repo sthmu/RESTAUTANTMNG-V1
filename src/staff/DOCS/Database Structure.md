@@ -5,7 +5,7 @@ You can combine the above approaches by creating a `Person` table for shared fie
 | id  | name      | age | type       |
 |------|-----------|-----|------------|
 | 1    | Alice     | 30  | Employee   |
-| 2    | Bob       | 25  | Customer   |
+| 2    | Bob       | 25  | customer   |
 | 3    | Charlie   | 40  | Employee   |
 
 #### Table: `Employee`
@@ -14,7 +14,7 @@ You can combine the above approaches by creating a `Person` table for shared fie
 | 1         | 50000   | Engineer    |
 | 3         | 60000   | Manager     |
 
-#### Table: `Customer`
+#### Table: `customer`
 | person_id | customerType | loyaltyPoints |
 |-----------|--------------|----------------|
 | 2         | Regular      | 200            |

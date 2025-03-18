@@ -1,5 +1,7 @@
 package staff;
 
+import common.TablePrinter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class StaffManager {
     public void addStaff(int id, String name, String contact, String role,double salary, String position) {
         staffList.add(new Staff(id,name,contact,role,salary,position));
     }
+
     public void removeEmployee(String name) {
         staffList.removeIf(staff -> staff.getName().equals(name));
     }
@@ -23,6 +26,9 @@ public class StaffManager {
         if (staffList.isEmpty()) {
             System.out.println("No staff records available.");
         } else {
+            TablePrinter.printTable(staffList.toArray(new Staff[0]));
+
+
             for (Staff staff : staffList) {
                 System.out.println(staff);
             }

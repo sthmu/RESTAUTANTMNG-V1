@@ -1,19 +1,46 @@
 package staff;
 
 
-import common.Person;
 
-// Staff class inheriting from Person
-public class Staff extends Person {
+public class Staff  {
+    private int id;
+    private String name;
+    private String contact;
     private String role;
     private double salary;
     private String position;
 
-    public Staff(int id, String name, String contact, String role,double salary, String position) {
-        super(id, name, contact);
+    public Staff(int id, String name, String contact, String role, double salary, String position) {
+        this.id = id;
+        this.name = name;
+        this.contact = contact;
         this.role = role;
-        this.salary=salary;
-        this.position=position;
+        this.salary = salary;
+        this.position = position;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getRole() {
@@ -45,6 +72,6 @@ public class Staff extends Person {
 
     @Override
     public String toString() {
-        return "Employee: " + getName() + ", Position: " + position + ", Salary: " + salary;
+        return "Employee: " + name + ", Position: " + position + ", Salary: " + salary;
     }
 }

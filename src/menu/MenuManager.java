@@ -9,6 +9,7 @@ public class MenuManager {
     // Constructor to initialize the menu management system
     public MenuManager() {
         this.menuItems = new ArrayList<>();
+
     }
     // Method to add a new menu item
     public void addMenuItem(String name, double price,boolean isAvailable, List<String> ingredients) {

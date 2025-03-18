@@ -13,7 +13,8 @@ public class InventoryDatabaseManager {
                 + "id INT AUTO_INCREMENT PRIMARY KEY, "
                 + "name VARCHAR(255) NOT NULL, "
                 + "quantity INT NOT NULL, "
-                + "price DOUBLE NOT NULL, "
+                + "price DOUBLE NOT NULL,"
+                + "unit VARCHAR(20) NOT NULL, "
                 + "expireDate DATE NOT NULL)";
 
         try (Connection connection = DatabaseConnection.getInstance().getConnection();
@@ -26,16 +27,16 @@ public class InventoryDatabaseManager {
     }
 
     public void addItem(InventoryItem item) {
-        String insertSQL = "INSERT INTO InventoryItem (name, quantity, price, expireDate) VALUES (?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO InventoryItem (name, quantity, price,unit, expireDate) VALUES (?, ?, ?,?, ?)";
 
         try (Connection connection = DatabaseConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
             preparedStatement.setString(1, item.getName());
             preparedStatement.setInt(2, item.getQuantity());
             preparedStatement.setDouble(3, item.getPrice());
-            preparedStatement.setDate(4, Date.valueOf(item.getExpireDate()));
+            preparedStatement.setString(4, item.getUnit().name());
+            preparedStatement.setDate(5, Date.valueOf(item.getExpireDate()));
             preparedStatement.executeUpdate();
-            System.out.println("Item added successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -62,12 +63,17 @@ public class InventoryDatabaseManager {
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(selectSQL)) {
             while (resultSet.next()) {
+                int id=resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 int quantity = resultSet.getInt("quantity");
                 double price = resultSet.getDouble("price");
+                Unit unit = Unit.valueOf(resultSet.getString("unit"));
                 LocalDate expireDate = resultSet.getDate("expireDate").toLocalDate();
-                items.add(new InventoryItem(name, quantity, price, expireDate));
+                items.add(new InventoryItem(id,name, quantity, price,unit, expireDate));
+
+                System.out.println();
             }
+            System.out.println("Items retrieved successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
         }

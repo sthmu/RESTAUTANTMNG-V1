@@ -2,6 +2,7 @@ package inventory;
 
 import Notifications.Notification;
 import common.ManagerClass;
+import common.TablePrinter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -52,10 +53,10 @@ public class InventoryManager extends ManagerClass {
     }
 
     public void view() {
-        for (InventoryItem item : items) {
-            System.out.println(item);
-        }
+        InventoryItem[] itemsArray = items.toArray(new InventoryItem[0]);
+        TablePrinter.printTable(itemsArray);
     }
+
 
     public void viewNotifications() {
         //this will set the notifications array

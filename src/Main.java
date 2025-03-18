@@ -1,5 +1,6 @@
 import common.TitleStrings;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import static common.ManagerClass.clearConsole;

@@ -10,6 +10,15 @@ public class InventoryItem  {
     private Unit unit; // Unit of measurement
     private LocalDate expireDate;
 
+    public InventoryItem(int id, String name, int quantity, double price,Unit unit, LocalDate expireDate) {
+        this.id=id;
+        this.name=name;
+        this.quantity = quantity;
+        this.price = price;
+        this.unit = unit;
+        this.expireDate = expireDate;
+    }
+
     public InventoryItem(String name, int quantity, double price, LocalDate expireDate) {
         this.name=name;
         this.quantity = quantity;
@@ -88,6 +97,6 @@ public class InventoryItem  {
 
     @Override
     public String toString() {
-        return super.toString() + ", Quantity: " + quantity + ", Price: " + price + ", Expire Date: " + expireDate;
+        return "InventoryItem [id=" + id + ", name=" + name + ", quantity=" + quantity + ", price=" + price + ", unit=" + unit + ", expireDate=" + expireDate + "]";
     }
 }

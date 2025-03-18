@@ -19,4 +19,9 @@ public class Ingredient extends InventoryItem{
     public List<MenuItem> getAssociatedMenuItems() {
         return associatedMenuItems;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", associatedMenuItems=" + associatedMenuItems + "]";
+    }
 }

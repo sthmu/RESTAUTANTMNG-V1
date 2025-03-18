@@ -9,6 +9,7 @@ import order.OrderStatus;
 import staff.StaffManager;
 
 import java.time.LocalDate;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -47,9 +48,9 @@ public class RestaurantManagementSystem extends ManagerClass {
                     inventoryManager.add(name, quantity, price, expireDate);
                     break;
                 case 2:
+                    inventoryManager.view();
                     System.out.print("Enter item name to remove: ");
                     String itemName = scanner.nextLine();
-
                     inventoryManager.remove(new InventoryItem(itemName));
                     break;
                 case 3:
@@ -119,7 +120,6 @@ public class RestaurantManagementSystem extends ManagerClass {
         List<OrderItem> items = new ArrayList<>();
         while (true) {
             clearConsole();
-            System.out.println(TitleStrings.ORDER_MANAGE);
             System.out.print("Enter item name (or enter 'done' to finish): ");
             String itemName = scanner.nextLine();
             if (itemName.equalsIgnoreCase("done")) {
