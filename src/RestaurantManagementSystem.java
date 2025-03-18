@@ -147,23 +147,19 @@ public class RestaurantManagementSystem extends ManagerClass {
             System.out.println("3. View Employees");
             System.out.println("4. Back to Main Menu");
             System.out.print("Choose an option: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+
+            int choice = getValidInt(scanner); // Using helper method to get valid integer input
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter employee ID: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine();
+                    int id = getValidInt(scanner, "Enter employee ID: ");
                     System.out.print("Enter employee name: ");
                     String name = scanner.nextLine();
                     System.out.print("Enter contact: ");
                     String contact = scanner.nextLine();
                     System.out.print("Enter role: ");
                     String role = scanner.nextLine();
-                    System.out.print("Enter salary: ");
-                    double salary = scanner.nextDouble();
-                    scanner.nextLine();
+                    double salary = getValidDouble(scanner, "Enter salary: ");
                     System.out.print("Enter position: ");
                     String position = scanner.nextLine();
                     staffManager.addStaff(id, name, contact, role, salary, position);
@@ -181,6 +177,47 @@ public class RestaurantManagementSystem extends ManagerClass {
                 default:
                     clearConsole();
                     System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    /**
+     * Helper method to ensure valid integer input
+     */
+    private int getValidInt(Scanner scanner) {
+        while (true) {
+            try {
+                int value = scanner.nextInt();
+                scanner.nextLine(); // Consume newline
+                return value;
+            } catch (InputMismatchException e) {
+                System.out.print("Invalid input. Please enter a valid number: ");
+                scanner.nextLine(); // Clear invalid input
+            }
+        }
+    }
+
+    /**
+     * Overloaded helper method with a custom message
+     */
+    private int getValidInt(Scanner scanner, String message) {
+        System.out.print(message);
+        return getValidInt(scanner);
+    }
+
+    /**
+     * Helper method to ensure valid double input
+     */
+    private double getValidDouble(Scanner scanner, String message) {
+        while (true) {
+            try {
+                System.out.print(message);
+                double value = scanner.nextDouble();
+                scanner.nextLine(); // Consume newline
+                return value;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine(); // Clear invalid input
             }
         }
     }
